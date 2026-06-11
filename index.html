@@ -1,72 +1,305 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anthony M. Rosales | IT Graduate Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
         }
-        .container {
+
+        /* Navigation Bar */
+        nav {
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
-        h1 { color: #2c3e50; }
-        h2 { color: #3498db; border-bottom: 2px solid #3498db; padding-bottom: 5px; }
-        .contact a { color: #3498db; text-decoration: none; }
-        .project {
-            background: #ecf0f1;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 3rem;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .location {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects */
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #667eea;
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .container {
+                padding: 5rem 1rem 2rem;
+            }
+        }
+
+        /* Button style */
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #5a67d8;
         }
     </style>
 </head>
 <body>
+
+<nav>
+    <div class="nav-container">
+        <div class="logo">Anthony M. Rosales</div>
+        <div class="nav-links">
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">My Projects</a>
+            <a href="#contact">Contact Me</a>
+        </div>
+    </div>
+</nav>
+
 <div class="container">
-    <h1>Anthony M. Rosales</h1>
-    <p><strong>BS Information Technology Graduate</strong><br>
-    Poblacion 1, Tanjay City, Negros Oriental</p>
-
-    <h2>About Me</h2>
-    <p>I recently graduated with a degree in Information Technology. I am passionate about web development, IT support, and building practical tech solutions. Looking for opportunities to grow and contribute.</p>
-
-    <h2>Skills</h2>
-    <ul>
-        <li>HTML, CSS, JavaScript (basic)</li>
-        <li>Python, Java (beginner to intermediate)</li>
-        <li>MySQL, PHP (basic)</li>
-        <li>Git & GitHub</li>
-        <li>Computer troubleshooting & networking basics</li>
-    </ul>
-
-    <h2>Projects</h2>
-    <div class="project">
-        <strong>Student Information System</strong><br>
-        A simple system using PHP and MySQL for school records.
-    </div>
-    <div class="project">
-        <strong>Personal Blog (HTML/CSS)</strong><br>
-        A responsive blog layout showcasing my writing on tech topics.
-    </div>
-    <div class="project">
-        <strong>Capstone Project</strong><br>
-        [Add your actual capstone project title and description here]
+    <!-- Hero / Introduction -->
+    <div class="hero">
+        <h1>Anthony M. Rosales</h1>
+        <p>BS Information Technology Graduate</p>
+        <p class="location">📍 Poblacion 1, Tanjay City, Negros Oriental, Philippines</p>
+        <a href="#contact" class="btn">Hire Me</a>
     </div>
 
-    <h2>Contact</h2>
-    <p class="contact">
-        📧 <a href="mailto:your-email@example.com">your-email@example.com</a><br>
-        💼 <a href="#">LinkedIn (add your link)</a><br>
-        🐙 <a href="https://github.com/yourusername">GitHub Profile</a>
-    </p>
-    <p><em>📍 Based in Tanjay City, Negros Oriental, Philippines</em></p>
+    <!-- About Me Section -->
+    <section id="about">
+        <h2>📖 About Me</h2>
+        <p>Hello! I'm Anthony M. Rosales, a recent graduate of Bachelor of Science in Information Technology. I am passionate about technology, web development, and IT solutions. I am eager to apply my knowledge and skills in real-world projects, whether in software development, technical support, or IT administration.</p>
+        <p style="margin-top: 1rem;">I am a fast learner, detail-oriented, and enjoy solving problems. I am currently looking for opportunities to grow as an IT professional and contribute to meaningful projects.</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>⚙️ Skills</h2>
+        <div class="skills-grid">
+            <span class="skill-tag">HTML5 & CSS3</span>
+            <span class="skill-tag">JavaScript (Basic)</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java (Basic)</span>
+            <span class="skill-tag">PHP & MySQL</span>
+            <span class="skill-tag">Git & GitHub</span>
+            <span class="skill-tag">Computer Troubleshooting</span>
+            <span class="skill-tag">Networking Basics</span>
+            <span class="skill-tag">Microsoft Office</span>
+        </div>
+    </section>
+
+    <!-- My Projects Section -->
+    <section id="projects">
+        <h2>📁 My Projects</h2>
+
+        <div class="project-card">
+            <h3>Student Information System</h3>
+            <p>A web-based system for managing student records, grades, and enrollment. Built with PHP and MySQL.</p>
+            <p><strong>Technologies:</strong> PHP, MySQL, HTML, CSS</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Personal Blog Website</h3>
+            <p>A responsive blog layout where I share my learnings and insights about technology and IT trends.</p>
+            <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Inventory Management System</h3>
+            <p>A simple desktop application for tracking products and stocks. Built with Python and Tkinter.</p>
+            <p><strong>Technologies:</strong> Python, Tkinter, SQLite</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Capstone Project</h3>
+            <p>[Replace this with your actual capstone project title and description from college]</p>
+            <p><strong>Technologies:</strong> [e.g., Laravel, React, etc.]</p>
+        </div>
+    </section>
+
+    <!-- Contact Me Section -->
+    <section id="contact">
+        <h2>📞 Contact Me</h2>
+        <div class="contact-info">
+            <div class="contact-item">📧 <strong>Email:</strong> <a href="mailto:anthony.rosales@example.com">anthony.rosales@example.com</a></div>
+            <div class="contact-item">📱 <strong>Phone:</strong> +63 912 345 6789</div>
+            <div class="contact-item">💼 <strong>LinkedIn:</strong> <a href="#">linkedin.com/in/anthonyrosales</a></div>
+            <div class="contact-item">🐙 <strong>GitHub:</strong> <a href="https://github.com/antoniusrosales">github.com/antoniusrosales</a></div>
+            <div class="contact-item">📍 <strong>Location:</strong> Poblacion 1, Tanjay City, Negros Oriental</div>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">📌 Available for freelance projects and full-time opportunities.</p>
+    </section>
 </div>
+
+<footer>
+    <p>&copy; 2026 Anthony M. Rosales. All rights reserved. | Built with ❤️ from Tanjay City</p>
+</footer>
+
 </body>
 </html>
