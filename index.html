@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Anthony M. Rosales | IT Graduate Portfolio</title>
     <style>
         * {
@@ -11,17 +11,29 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            line-height: 1.6;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* Navigation Bar */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+
+        :root {
+            --gold: #d4af37;
+            --gold-dark: #b8960c;
+            --gold-light: #f5e18a;
+            --black: #0a0a0a;
+            --black-light: #1a1a1a;
+            --black-lighter: #2a2a2a;
+        }
+
         nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--black-light);
+            border-bottom: 2px solid var(--gold);
             position: fixed;
             width: 100%;
             top: 0;
@@ -39,126 +51,142 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            color: #667eea;
+            color: var(--gold);
+            letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: #e0e0e0;
             font-weight: 500;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: #667eea;
+            color: var(--gold);
         }
 
-        /* Main Content */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 6rem 2rem 3rem;
         }
 
-        /* Sections */
         section {
-            background: white;
+            background: var(--black-light);
             border-radius: 20px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
+            border: 1px solid var(--black-lighter);
+            transition: transform 0.3s, border-color 0.3s;
+            scroll-margin-top: 80px;
         }
 
         section:hover {
             transform: translateY(-5px);
+            border-color: var(--gold);
         }
 
         h2 {
-            color: #667eea;
-            border-bottom: 3px solid #667eea;
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
             display: inline-block;
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
         }
 
-        /* Hero Section */
+        p {
+            margin-bottom: 0.8rem;
+        }
+
         .hero {
             text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--black) 0%, var(--black-light) 100%);
+            border: 1px solid var(--gold);
+            padding: 2rem;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--gold);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
         }
 
-        .hero .location {
-            font-size: 1rem;
-            opacity: 0.9;
+        .profile-container {
+            text-align: center;
+            margin-bottom: 1.5rem;
         }
 
-        /* Skills */
+        .profile-photo {
+            width: min(150px, 40vw);
+            height: min(150px, 40vw);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            background: var(--black-lighter);
+        }
+
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.8rem;
             margin-top: 1rem;
         }
 
         .skill-tag {
-            background: #667eea;
-            color: white;
-            padding: 0.5rem 1.2rem;
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
+            color: var(--black);
+            padding: 0.4rem 1rem;
             border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            font-weight: bold;
         }
 
-        /* Projects */
-        .project-card {
-            background: #f8f9fa;
+        .project-card, .exp-card {
+            background: var(--black-lighter);
             border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 5px solid #667eea;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            border-left: 4px solid var(--gold);
         }
 
-        .project-card h3 {
-            color: #667eea;
+        .project-card h3, .exp-card h3 {
+            color: var(--gold);
             margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
 
-        /* Contact */
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            font-size: 1.1rem;
+            gap: 0.8rem;
+            font-size: 1rem;
+            flex-wrap: wrap;
+            word-break: break-word;
         }
 
         .contact-item a {
-            color: #667eea;
+            color: var(--gold);
             text-decoration: none;
         }
 
@@ -166,45 +194,193 @@
             text-decoration: underline;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: white;
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
+            color: var(--black);
+            padding: 0.6rem 1.3rem;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: transform 0.3s;
         }
 
-        /* Mobile Responsive */
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: #888;
+            border-top: 1px solid var(--gold-dark);
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--black);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            background: var(--gold-light);
+            transform: scale(1.1);
+        }
+
+        /* ----- GALLERY SECTION (NEW) ----- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-item {
+            background: var(--black-lighter);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--black-lighter);
+            transition: transform 0.3s, border-color 0.3s;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            border-color: var(--gold);
+        }
+
+        .gallery-item video,
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            background: #111;
+        }
+
+        .gallery-item .caption {
+            padding: 0.7rem 0.8rem;
+            font-size: 0.9rem;
+            color: #ccc;
+            background: var(--black-light);
+            border-top: 1px solid #2a2a2a;
+            text-align: center;
+        }
+
+        .gallery-item .caption i {
+            color: var(--gold);
+            margin-right: 6px;
+        }
+
+        /* responsive */
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.8rem;
+                padding: 0.8rem 1rem;
             }
             .nav-links {
                 gap: 1rem;
                 justify-content: center;
             }
-            .hero h1 {
-                font-size: 1.8rem;
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+            .logo {
+                font-size: 1.1rem;
             }
             .container {
                 padding: 5rem 1rem 2rem;
             }
+            section {
+                padding: 1.2rem;
+                margin-bottom: 1.2rem;
+                scroll-margin-top: 120px;
+            }
+            .hero {
+                padding: 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            h2 {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+            .profile-photo {
+                width: min(120px, 35vw);
+                height: min(120px, 35vw);
+            }
+            .skill-tag {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.8rem;
+            }
+            .project-card h3, .exp-card h3 {
+                font-size: 1rem;
+            }
+            .contact-item {
+                font-size: 0.85rem;
+                gap: 0.5rem;
+            }
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1rem;
+            }
+            .gallery-item video,
+            .gallery-item img {
+                height: 140px;
+            }
         }
 
-        /* Button style */
-        .btn {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 0.7rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            margin-top: 1rem;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background: #5a67d8;
+        @media (max-width: 480px) {
+            .profile-photo {
+                width: min(100px, 50vw);
+                height: min(100px, 50vw);
+            }
+            .nav-links {
+                gap: 0.8rem;
+            }
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+            }
+            .gallery-item video,
+            .gallery-item img {
+                height: 120px;
+            }
         }
     </style>
 </head>
@@ -212,95 +388,150 @@
 
 <nav>
     <div class="nav-container">
-        <break><break><break>
-        <div class="logo">Anthony M. Rosales</div>
+        <div class="logo">✦ ANTHONY M. ROSALES ✦</div>
         <div class="nav-links">
             <a href="#about">About Me</a>
             <a href="#skills">Skills</a>
-            <a href="#projects">My Projects</a>
-            <a href="#contact">Contact Me</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Leadership</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
         </div>
     </div>
 </nav>
 
 <div class="container">
-    <!-- Hero / Introduction -->
+    <!-- Hero -->
     <div class="hero">
+        <div class="profile-container">
+            <img class="profile-photo" src="pp.jpg" alt="Anthony M. Rosales">
+        </div>
         <h1>Anthony M. Rosales</h1>
         <p>BS Information Technology Graduate</p>
-        <p class="location">📍 Poblacion 1, Tanjay City, Negros Oriental, Philippines</p>
-        <a href="#contact" class="btn">Hire Me</a>
+        <p>IT Support Specialist | Video/Audio Editor | Encoder</p>
+        <p>📍 Ilaya, Tanjay City, Negros Oriental 6204</p>
+        <a href="#contact" class="btn">✦ Hire Me ✦</a>
     </div>
-<break><break><break><break><break><break>
-    <!-- About Me Section -->
+
+    <!-- About -->
     <section id="about">
         <h2>📖 About Me</h2>
-        <p>Hello! I'm Anthony M. Rosales, a recent graduate of Bachelor of Science in Information Technology. I am passionate about technology, web development, and IT solutions. I am eager to apply my knowledge and skills in real-world projects, whether in software development, technical support, or IT administration.</p>
-        <p style="margin-top: 1rem;">I am a fast learner, detail-oriented, and enjoy solving problems. I am currently looking for opportunities to grow as an IT professional and contribute to meaningful projects.</p>
+        <p>I am Anthony M. Rosales, a recent graduate of BS Information Technology at Negros Oriental State University (NORSU) - Bais City Campus. I also have a vocational background in Health Care/Nursing Aid from Villaflores College.</p>
+        <p>I am a dedicated and hardworking individual with experience in IT support, graphic/video editing, encoding, and sales. I served as Class President from 2022-2026, demonstrating leadership and organizational skills. I am currently looking for opportunities where I can contribute my technical and organizational skills while continuing to learn and grow.</p>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills -->
     <section id="skills">
-        <h2>⚙️ Skills</h2>
+        <h2>⚙️ Technical Skills</h2>
         <div class="skills-grid">
-            <span class="skill-tag">HTML5 & CSS3</span>
-            <span class="skill-tag">JavaScript (Basic)</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Java (Basic)</span>
-            <span class="skill-tag">PHP & MySQL</span>
-            <span class="skill-tag">Git & GitHub</span>
+            <span class="skill-tag">OS Installation & Configuration</span>
+            <span class="skill-tag">Video/Audio/Image Editing</span>
+            <span class="skill-tag">System Performance Monitoring</span>
             <span class="skill-tag">Computer Troubleshooting</span>
-            <span class="skill-tag">Networking Basics</span>
-            <span class="skill-tag">Microsoft Office</span>
+            <span class="skill-tag">Encoding & Data Entry</span>
+            <span class="skill-tag">IT Support & Maintenance</span>
+            <span class="skill-tag">Graphics Editing</span>
+            <span class="skill-tag">Teamwork & Collaboration</span>
         </div>
     </section>
 
-    <!-- My Projects Section -->
+    <!-- Experience -->
+    <section id="experience">
+        <h2>💼 Work Experience</h2>
+        <div class="exp-card"><h3>IT Support Specialist / Technician</h3><p><strong>Freelance / Self-Employed</strong> | 2017 - Present</p><p>Providing IT support, computer troubleshooting, and maintenance services to local clients.</p></div>
+        <div class="exp-card"><h3>Graphics/Video/Audio Editor & Filing (OJT)</h3><p><strong>Tanjay City Police Station</strong> | 800 hours</p><p>Edited multimedia content and managed filing systems during internship.</p></div>
+        <div class="exp-card"><h3>IT Support / Technician (On-call)</h3><p><strong>Tanjay City Police Station</strong> | Present</p><p>On-call technical support for computer systems and IT infrastructure.</p></div>
+        <div class="exp-card"><h3>Cashier / Secretary / Admin</h3><p><strong>AB Optical</strong> | 2017 - 2019 | Dumaguete City</p><p>Handled cashiering, administrative tasks, and secretarial duties.</p></div>
+        <div class="exp-card"><h3>Encoder / On-Call Nurse</h3><p><strong>MBA Inc.</strong> | 2016 - 2017 | Dumaguete City</p><p>Performed encoding tasks and provided on-call nursing support.</p></div>
+        <div class="exp-card"><h3>Private Nurse</h3><p><strong>Allied Home Health Services</strong> | 2015 - 2016 | Dumaguete City</p><p>Provided private nursing care to patients.</p></div>
+        <div class="exp-card"><h3>Sales Representative</h3><p><strong>PENSHOPPE</strong> | 2014 - 2015 | Dumaguete City</p><p>Handled customer sales and product promotion.</p></div>
+    </section>
+
+    <!-- Leadership -->
     <section id="projects">
-        <h2>📁 My Projects</h2>
+        <h2>📁 Leadership & Internship</h2>
+        <div class="project-card"><h3>Class President</h3><p><strong>NORSU - Bais City Campus</strong> | 2022 - 2026</p><p>Served as official class representative, organized class activities, coordinated with instructors, and demonstrated leadership, communication, and teamwork skills.</p></div>
+        <div class="project-card"><h3>OJT / Internship 1 & 2</h3><p><strong>Tanjay City Police Station</strong> | 800 hours</p><p>Completed internship in graphics/video/audio editing and filing systems.</p></div>
+    </section>
 
-        <div class="project-card">
-            <h3>Student Information System</h3>
-            <p>A web-based system for managing student records, grades, and enrollment. Built with PHP and MySQL.</p>
-            <p><strong>Technologies:</strong> PHP, MySQL, HTML, CSS</p>
-        </div>
-
-        <div class="project-card">
-            <h3>Personal Blog Website</h3>
-            <p>A responsive blog layout where I share my learnings and insights about technology and IT trends.</p>
-            <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript</p>
-        </div>
-
-        <div class="project-card">
-            <h3>Inventory Management System</h3>
-            <p>A simple desktop application for tracking products and stocks. Built with Python and Tkinter.</p>
-            <p><strong>Technologies:</strong> Python, Tkinter, SQLite</p>
-        </div>
-
-        <div class="project-card">
-            <h3>Capstone Project</h3>
-            <p>[Replace this with your actual capstone project title and description from college]</p>
-            <p><strong>Technologies:</strong> [e.g., Laravel, React, etc.]</p>
+    <!-- Seminars -->
+    <section id="seminars">
+        <h2>🎓 Seminars Attended</h2>
+        <div class="skills-grid">
+            <span class="skill-tag">Addressing Threats & Security Issues in WWW Technology (NORSU, Dec 13, 2024)</span>
+            <span class="skill-tag">The Impact of Artificial Intelligence (NORSU, Dec 13, 2024)</span>
         </div>
     </section>
 
-    <!-- Contact Me Section -->
+    <!-- ========== NEW GALLERY SECTION ========== -->
+    <section id="gallery">
+        <h2>🖼️ My Gallery</h2>
+        <p style="margin-bottom: 0.8rem; opacity: 0.8;">Moments from my journey — videos and pictures.</p>
+        <div class="gallery-grid">
+            <!-- GALLERY ITEM 1: video -->
+            <div class="gallery-item">
+                <video controls preload="metadata" poster="https://placehold.co/400x200/1a1a1a/d4af37?text=Video+Preview">
+                    <source src="sample-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="caption"><i>🎬</i> OJT project walkthrough</div>
+            </div>
+
+            <!-- GALLERY ITEM 2: image -->
+            <div class="gallery-item">
+                <img src="https://placehold.co/400x200/1a1a1a/d4af37?text=Graduation+Day" alt="Graduation photo">
+                <div class="caption"><i>📸</i> Graduation 2026</div>
+            </div>
+
+            <!-- GALLERY ITEM 3: image -->
+            <div class="gallery-item">
+                <img src="https://placehold.co/400x200/1a1a1a/d4af37?text=Class+President" alt="Class president event">
+                <div class="caption"><i>📸</i> Class President assembly</div>
+            </div>
+
+            <!-- GALLERY ITEM 4: video -->
+            <div class="gallery-item">
+                <video controls preload="metadata" poster="https://placehold.co/400x200/1a1a1a/d4af37?text=Editing+Demo">
+                    <source src="sample-video2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="caption"><i>🎬</i> Video editing demo</div>
+            </div>
+
+            <!-- GALLERY ITEM 5: image -->
+            <div class="gallery-item">
+                <img src="https://placehold.co/400x200/1a1a1a/d4af37?text=IT+Support" alt="IT support">
+                <div class="caption"><i>📸</i> IT support on-site</div>
+            </div>
+
+            <!-- GALLERY ITEM 6: image -->
+            <div class="gallery-item">
+                <img src="https://placehold.co/400x200/1a1a1a/d4af37?text=Seminar" alt="Seminar">
+                <div class="caption"><i>📸</i> AI seminar 2024</div>
+            </div>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">💡 Replace placeholder files with your own media. Supported: .mp4, .jpg, .png</p>
+    </section>
+
+    <!-- Contact -->
     <section id="contact">
         <h2>📞 Contact Me</h2>
         <div class="contact-info">
-            <div class="contact-item">📧 <strong>Email:</strong> <a href="mailto:anthony.rosales@example.com">anthony.rosales@example.com</a></div>
-            <div class="contact-item">📱 <strong>Phone:</strong> +63 912 345 6789</div>
-            <div class="contact-item">💼 <strong>LinkedIn:</strong> <a href="#">linkedin.com/in/anthonyrosales</a></div>
+            <div class="contact-item">📧 <strong>Email:</strong> <a href="mailto:anthonymananquilrosales@gmail.com">anthonymananquilrosales@gmail.com</a></div>
+            <div class="contact-item">📱 <strong>Phone:</strong> 0905 616 1503</div>
+            <div class="contact-item">📍 <strong>Address:</strong> Ilaya, Tanjay City, Negros Oriental 6204</div>
             <div class="contact-item">🐙 <strong>GitHub:</strong> <a href="https://github.com/antoniusrosales">github.com/antoniusrosales</a></div>
-            <div class="contact-item">📍 <strong>Location:</strong> Poblacion 1, Tanjay City, Negros Oriental</div>
+            <div class="contact-item">📄 <strong>Resume:</strong> <a href="ANTHONY Resume 2026 - for work . ..pdf" download>Download My Resume (PDF)</a></div>
         </div>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">📌 Available for freelance projects and full-time opportunities.</p>
     </section>
 </div>
 
 <footer>
-    <p>&copy; 2026 Anthony M. Rosales. All rights reserved. | Built with ❤️ from Tanjay City</p>
+    <p>✦ Anthony M. Rosales | IT Graduate ✦</p>
+    <p>Ilaya, Tanjay City, Negros Oriental, Philippines</p>
 </footer>
+
+<a href="#" class="back-to-top" title="Back to Top">↑</a>
 
 </body>
 </html>
